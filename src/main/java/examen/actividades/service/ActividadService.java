@@ -6,6 +6,7 @@ import examen.actividades.repository.Repositorio;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class ActividadService {
@@ -33,6 +34,13 @@ public class ActividadService {
 
     public List<Actividad> obtenerTodas() {
         return new ArrayList<>(actividades);
+    }
+
+
+    public Optional<Actividad> buscarPorCodigo(String codigo) {
+        return actividades.stream()
+                .filter(a -> a.getCodigo().equals(codigo))
+                .findFirst();
     }
 
 

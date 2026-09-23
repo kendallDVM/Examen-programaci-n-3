@@ -2,45 +2,68 @@ package examen.actividades.model;
 
 public abstract class Actividad {
 
-    private final String codigo;
-    private String titulo;
-    private EstadoActividad estado;
-    private int contador;
+    private String codigo;
+    private String nombre;
+    private double tarifaBase;
+    private int cupoTotal;
+    private int inscritos;
 
-    protected Actividad(String codigo, String titulo, EstadoActividad estado, int contador) {
+    protected Actividad(String codigo, String nombre, double tarifaBase, int cupoTotal, int inscritos) {
         this.codigo = codigo;
-        this.titulo = titulo;
-        this.estado = estado;
-        this.contador = contador;
+        this.nombre = nombre;
+        this.tarifaBase = tarifaBase;
+        this.cupoTotal = cupoTotal;
+        this.inscritos = inscritos;
     }
 
     public String getCodigo() {
         return codigo;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public EstadoActividad getEstado() {
-        return estado;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setEstado(EstadoActividad estado) {
-        this.estado = estado;
+    public double getTarifaBase() {
+        return tarifaBase;
     }
 
-    public int getContador() {
-        return contador;
+    public void setTarifaBase(double tarifaBase) {
+        this.tarifaBase = tarifaBase;
     }
 
-    public void setContador(int contador) {
-        this.contador = contador;
+    public int getCupoTotal() {
+        return cupoTotal;
     }
+
+    public void setCupoTotal(int cupoTotal) {
+        this.cupoTotal = cupoTotal;
+    }
+
+    public int getInscritos() {
+        return inscritos;
+    }
+
+    public void setInscritos(int inscritos) {
+        this.inscritos = inscritos;
+    }
+
+
+    public int getCuposDisponibles() {
+        return cupoTotal - inscritos;
+    }
+
 
     public abstract TipoActividad getTipo();
+
+
+    public abstract double calcularTarifaFinal();
 }
