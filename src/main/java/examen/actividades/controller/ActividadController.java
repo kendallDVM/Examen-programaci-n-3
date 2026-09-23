@@ -56,6 +56,10 @@ public class ActividadController {
         }
     }
 
+    public boolean existeCodigo(String codigo) {
+        return servicio.buscarPorCodigo(codigo).isPresent();
+    }
+
     public void buscarActividad(String codigo) {
         Optional<Actividad> resultado = servicio.buscarPorCodigo(codigo);
         if (resultado.isPresent()) {

@@ -83,6 +83,11 @@ public class VentanaActividades extends JFrame {
             int cupoTotal = Integer.parseInt(txtCupoTotal.getText().trim());
             TipoActividad tipo = cmbTipo.getItemAt(cmbTipo.getSelectedIndex());
 
+            if (controlador.existeCodigo(codigo)) {
+                mostrarError("Ya existe una actividad con el código \"" + codigo + "\".");
+                return;
+            }
+
             controlador.registrarActividad(codigo, nombre, tarifaBase, cupoTotal, tipo);
 
             txtCodigo.setText("");
